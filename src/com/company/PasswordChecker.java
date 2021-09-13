@@ -1,6 +1,6 @@
 package com.company;
 
-public class PasswordValidator {
+public class PasswordChecker {
 
     public int passwordLenght(String i) {
         return 8;

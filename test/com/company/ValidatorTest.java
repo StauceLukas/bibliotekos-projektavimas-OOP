@@ -9,20 +9,20 @@ public class ValidatorTest {
     // Password requirements testing
     @Test
     public void TestPasswordLengthIsBiggerThanX(){
-        PasswordValidator passwordValidator = new PasswordValidator();
-        assertEquals(8, passwordValidator.passwordLenght("password"));
+        PasswordChecker passwordChecker = new PasswordChecker();
+        assertEquals(8, passwordChecker.passwordLenght("password"));
     }
 
     @Test
     public void TestPasswordHasUppercase(){
-        PasswordValidator passwordValidator = new PasswordValidator();
-        assertTrue(passwordValidator.hasUppercase("Password"));
+        PasswordChecker passwordChecker = new PasswordChecker();
+        assertTrue(passwordChecker.hasUppercase("Password"));
     }
 
     @Test
     public void TestPasswordHasSpecialSymbol(){
-        PasswordValidator passwordValidator = new PasswordValidator();
-        assertTrue(passwordValidator.hasSpecialSymbols("P@ssword"));
+        PasswordChecker passwordChecker= new PasswordChecker();
+        assertTrue(passwordChecker.hasSpecialSymbols("P@ssword"));
     }
 
     @Test
