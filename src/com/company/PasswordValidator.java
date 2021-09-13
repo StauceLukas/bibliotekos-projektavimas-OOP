@@ -6,11 +6,11 @@ public class PasswordValidator {
         return 8;
     }
 
-    public boolean hasUppercase() {
+    public boolean hasUppercase(String i) {
         return true;
     }
 
-    public boolean hasSpecialSymbols() {
+    public boolean hasSpecialSymbols(String i) {
         return true;
     }
 }

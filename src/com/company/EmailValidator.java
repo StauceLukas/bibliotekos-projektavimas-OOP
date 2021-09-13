@@ -1,15 +1,15 @@
 package com.company;
 
 public class EmailValidator {
-    public boolean hasEtaSymbol() {
+    public boolean hasEtaSymbol(String i) {
         return true;
     }
 
-    public boolean hasOnlyRightSymbols() {
+    public boolean hasOnlyRightSymbols(String i) {
         return true;
     }
 
-    public boolean hasRightDomain() {
+    public boolean hasRightDomain(String i) {
         return true;
 
     }
