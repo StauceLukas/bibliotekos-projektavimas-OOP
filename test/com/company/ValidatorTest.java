@@ -22,7 +22,7 @@ public class ValidatorTest {
     @Test
     public void TestPasswordHasSpecialSymbol(){
         PasswordChecker passwordChecker= new PasswordChecker();
-        assertTrue(passwordChecker.hasSpecialSymbols("P@ssword"));
+        assertTrue(passwordChecker.hasSpecialSymbols("P@ssword?!123$#*"));
     }
 
     @Test
@@ -34,13 +34,13 @@ public class ValidatorTest {
     @Test
     public void TestPhoneChangeToLithuanianPrefix(){
         PhoneValidator phoneValidator = new PhoneValidator();
-        assertTrue(phoneValidator.changeToLithuanianPrefix("+370"));
+        assertEquals("86123456",phoneValidator.changeToLithuanianPrefix("+3706123456"));
     }
 
     @Test
     public void TestPhoneAddNewPhoneCodesRules(){
         PhoneValidator phoneValidator = new PhoneValidator();
-        assertTrue(phoneValidator.addNewPhoneRules("lv", 87));
+        assertEquals("lv",phoneValidator.addNewPhoneRules(87));
     }
 
     // Email test requirements
