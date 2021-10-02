@@ -1,5 +1,6 @@
 package testImplementantion;
 
+
 public class EmailValidator {
 
     public boolean validate(String data){
@@ -10,10 +11,11 @@ public class EmailValidator {
         boolean specialCharInFront = HasSpecialCharacterInFront_False(data);
         boolean specialCharInBack = HasSpecialCharacterInBack_False(data);
         boolean ConsecutiveSpecialChar = HasConsecutiveSpecialCharacters_False(data);
-        boolean validEmail = ValidEmail_True(data);
 
-        return haveETASign && recipientName && domainName && topLevelDomain
-                && specialCharInBack && specialCharInFront && ConsecutiveSpecialChar && validEmail;
+
+        return (haveETASign && recipientName && domainName && topLevelDomain
+                && specialCharInBack && specialCharInFront && ConsecutiveSpecialChar);
+
 
     }
 
@@ -22,12 +24,6 @@ public class EmailValidator {
         boolean recipientName = DoesNotHaveRecipientName_False(data);
         boolean domainName = DoesNotHaveDomainName_False(data);
         boolean topLevelDomain = DoesNotHaveTopLevelDomain_False(data);
-
-/*        System.out.println(haveETASign);
-        System.out.println(recipientName);
-        System.out.println(domainName);
-        System.out.println(topLevelDomain);
-        System.out.println(haveETASign || recipientName || domainName || topLevelDomain);*/
 
         return haveETASign || recipientName || domainName || topLevelDomain;
 

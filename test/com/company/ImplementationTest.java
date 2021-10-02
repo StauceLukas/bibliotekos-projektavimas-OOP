@@ -47,12 +47,12 @@ public class ImplementationTest {
 
     @Test
    public void validate_ValidEmail_True() {
-        assertFalse(emailValidator.validate("name.surname@email.com"));
+        assertFalse(emailValidator.validate("name.surnameemail.com"));
     }
 
     @Test
    public void validate_DoesNotHaveAtSign_False() {
-        assertFalse(emailValidator.validate("name.surnameemail.com"));
+        assertFalse(emailValidator.validate("name.surname@email.com"));
     }
 
   @Test
@@ -123,9 +123,9 @@ public class ImplementationTest {
         assertFalse(phoneNumberValidator.validate("+3701234567"));
     }
 
-/*    @Test
-    public void validate_AddLatvianPrefix_True() {
-        assertTrue(new PhoneNumberValidator().validate("+37161234567"));
-    }*/
+    @Test
+    public void validate_AddPrefix_True() {
+        assertTrue(phoneNumberValidator.AddPrefix_True("lv", "371"));
+    }
 
 }

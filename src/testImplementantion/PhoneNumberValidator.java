@@ -1,8 +1,10 @@
 package testImplementantion;
 
+import java.util.HashMap;
 
 public class PhoneNumberValidator {
 
+    HashMap<String, String> countryPhoneCode = new HashMap<String, String>();
 
     public boolean ValidPhoneNumber_True(String data) {
         return true;
@@ -21,7 +23,7 @@ public class PhoneNumberValidator {
 
     public boolean IsTooShort_False(String data) {
         int minimumLength = 9;
-        return data.length() <  minimumLength;
+        return data.length() < minimumLength;
     }
 
     public boolean IsTooLong_False(String data) {
@@ -48,14 +50,23 @@ public class PhoneNumberValidator {
         return hasLetters;
     }
 
-   /* public void addNewCountryPrefix(String data, int data1){
+    public boolean addNewCountryPrefix(String data, String data1) {
+
+        if (countryPhoneCode.containsKey(data)){
+            return false;
+        }
+        else{
+            countryPhoneCode.put(data, data1);
+            return true;
+        }
 
     }
 
-    public boolean validate_AddLatvianPrefix_True(String data1, String data2) {
-        return true;
+
+    public boolean AddPrefix_True(String data1, String data2) {
+        return addNewCountryPrefix(data1, data2);
     }
-    */
+
 
 
     public boolean validate(String data){
