@@ -3,12 +3,36 @@ package testImplementantion;
 public class EmailValidator {
 
     public boolean validate(String data){
-        return false;
+        boolean haveETASign = DoesNotHaveAtSign_False(data);
+        boolean recipientName = DoesNotHaveRecipientName_False(data);
+        boolean domainName = DoesNotHaveDomainName_False(data);
+        boolean topLevelDomain = DoesNotHaveTopLevelDomain_False(data);
+        boolean specialCharInFront = HasSpecialCharacterInFront_False(data);
+        boolean specialCharInBack = HasSpecialCharacterInBack_False(data);
+        boolean ConsecutiveSpecialChar = HasConsecutiveSpecialCharacters_False(data);
+        boolean validEmail = ValidEmail_True(data);
+
+        return haveETASign && recipientName && domainName && topLevelDomain
+                && specialCharInBack && specialCharInFront && ConsecutiveSpecialChar && validEmail;
+
     }
 
-    public boolean validate_ValidEmail_True() {
-        return true
+    public boolean ValidEmail_True(String data) {
+        boolean haveETASign = DoesNotHaveAtSign_False(data);
+        boolean recipientName = DoesNotHaveRecipientName_False(data);
+        boolean domainName = DoesNotHaveDomainName_False(data);
+        boolean topLevelDomain = DoesNotHaveTopLevelDomain_False(data);
+
+/*        System.out.println(haveETASign);
+        System.out.println(recipientName);
+        System.out.println(domainName);
+        System.out.println(topLevelDomain);
+        System.out.println(haveETASign || recipientName || domainName || topLevelDomain);*/
+
+        return haveETASign || recipientName || domainName || topLevelDomain;
+
     }
+
 
 
     public boolean DoesNotHaveAtSign_False(String data) {
@@ -20,19 +44,13 @@ public class EmailValidator {
        int nameLength = 0;
 
        for(int i = 0; i < data.length(); i++){
-           nameLength++;
            if (data.charAt(i) == '@'){
                break;
            }
+           nameLength++;
        }
+       return nameLength > 0;
 
-       if(nameLength > 0){
-           return false;
-       }
-       else{
-           return true;
-       }
-       //  veikia  bet blogai
    }
 
 
@@ -41,44 +59,63 @@ public class EmailValidator {
          int domainNameLength = 0;
 
          for(int i = 0; i < data.length(); i++){
-             nameLength++;
              if (data.charAt(i) == '@'){
                  break;
              }
+             nameLength++;
          }
 
-         for(int i = nameLength; i < data.length(); i++){
-             domainNameLength++;
+         for(int i = nameLength + 1; i < data.length(); i++){
              if (data.charAt(i) == '.'){
                  break;
              }
+             domainNameLength++;
          }
 
-         if(nameLength > 0){
-             return false;
-         }
-         else{
-             return true;
-         }
+         return domainNameLength > 0;
     }
 
-    public boolean DoesNotHaveTopLevelDomain_False() {
-        return false;
+    public boolean DoesNotHaveTopLevelDomain_False(String data) {
+        int topLevelDomainLength = 0;
+        boolean hasTopLevelDomain = true;
+
+        for(int i = data.length() - 1; i > 0; i-- ){
+            if (data.charAt(i) == '.'){
+                break;
+            }
+
+            if (data.charAt(i) == '@'){
+                hasTopLevelDomain = false;
+                break;
+            }
+            topLevelDomainLength++;
+
+        }
+        return (topLevelDomainLength > 0 && hasTopLevelDomain);
     }
 
 
-    public boolean HasSpecialCharacterInFront_False() {
-        return false;
+    public boolean HasSpecialCharacterInFront_False(String data) {
+        return data.charAt(0) == '!' || data.charAt(0) == '@';
     }
 
 
-    public boolean HasSpecialCharacterInBack_False() {
-        return false;
+    public boolean HasSpecialCharacterInBack_False(String data) {
+        int lastLetterIndex = data.length() - 1;
+        return data.charAt(lastLetterIndex) == '!' || data.charAt(lastLetterIndex) == '@';
     }
 
-    public boolean HasConsecutiveSpecialCharacters_False() {
-        return false;
-    }
+    public boolean HasConsecutiveSpecialCharacters_False(String data) {
+        boolean hasConsecutiveCharacters = false;
+        for (int i = 0; i < data.length(); i++) {
 
+            if (data.charAt(i) == '.' && data.charAt(i + 1) == '.') {
+                hasConsecutiveCharacters = true;
+                break;
+            }
+
+        }
+        return hasConsecutiveCharacters;
+    }
 
 }

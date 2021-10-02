@@ -4,39 +4,37 @@ public class PasswordValidator {
 
     public boolean validate(String data){
         boolean upperCaseValue = DoesNotHaveUppercase_False(data);
+        boolean IsNotValidLength = IsNotOfValidLength_False(data);
+        boolean specialSymbolValue = DoesNotHaveSpecialCharacters_False(data);
 
-        if(!upperCaseValue){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return (upperCaseValue && IsNotValidLength && specialSymbolValue);
     }
 
-    public boolean ValidPassword_True() {
-        return true;
+    public boolean ValidPassword_True(String data) {
+        boolean upperCaseValue = DoesNotHaveUppercase_False(data);
+        boolean IsNotValidLength = IsNotOfValidLength_False(data);
+        boolean specialSymbolValue = DoesNotHaveSpecialCharacters_False(data);
+
+        return (upperCaseValue && IsNotValidLength && specialSymbolValue);
     }
-
-
 
     public boolean IsNotOfValidLength_False(String data){
-        int length = 8;
-        return length <= data.length();
+        int minimalLength = 6;
+        return minimalLength < data.length();
     }
 
 
     public boolean DoesNotHaveUppercase_False(String data) {
         char ch;
         boolean upperCaseFlag = false;
-        for(int i=0;i < data.length();i++) {
+        for(int i=0 ;i < data.length(); i++) {
             ch = data.charAt(i);
             if(Character.isUpperCase(ch)) {
                 upperCaseFlag = true;
+                break;
             }
-            if(upperCaseFlag)
-                return true;
         }
-        return false;
+        return upperCaseFlag;
     }
 
 
@@ -45,13 +43,11 @@ public class PasswordValidator {
         boolean specialCharFlag = false;
         for(int i=0;i < data.length();i++) {
             ch = data.charAt(i);
-            if(ch == '$') {
+            if (ch == '$' || ch == '!' || ch == '@') {
                 specialCharFlag = true;
+                break;
             }
-            if(specialCharFlag)
-                return true;
         }
-        return false;
+        return specialCharFlag;
     }
-
 }
