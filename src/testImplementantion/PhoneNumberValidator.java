@@ -7,7 +7,15 @@ public class PhoneNumberValidator {
     HashMap<String, String> countryPhoneCode = new HashMap<String, String>();
 
     public boolean ValidPhoneNumber_True(String data) {
-        return true;
+        boolean NumberBeginsWith8 = NumberBeginsWith8_True(data);
+        boolean NumberBeginsWithDiffNumber = NumberBeginsWithDifferentNumber_False(data);
+        boolean tooShort = IsTooShort_False(data);
+        boolean tooLong = IsTooLong_False(data);
+        boolean invalidPrefix = PrefixIsInvalid_False(data);
+        boolean otherCharApartFromNumbers = HasOtherCharactersApartFromNumbers_False(data);
+
+        return (NumberBeginsWith8 && tooShort && invalidPrefix && NumberBeginsWithDiffNumber && tooLong
+                && otherCharApartFromNumbers);
     }
 
     public boolean NumberBeginsWith8_True(String data) {
