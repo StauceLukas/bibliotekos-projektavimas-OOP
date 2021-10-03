@@ -11,7 +11,7 @@ public class ValidatorTest {
     @Test
     public void TestPasswordLengthIsBiggerThanX(){
         PasswordChecker passwordChecker = new PasswordChecker();
-        assertEquals(8, passwordChecker.passwordLenght("password", 7));
+        assertTrue(passwordChecker.passwordLenght("password", 7));
     }
 
     @Test
