@@ -12,9 +12,7 @@ public class EmailValidator {
         boolean specialCharInBack = HasSpecialCharacterInBack_False(data);
         boolean ConsecutiveSpecialChar = HasConsecutiveSpecialCharacters_False(data);
 
-
-        return (haveETASign && recipientName && domainName && topLevelDomain
-                && specialCharInBack && specialCharInFront && ConsecutiveSpecialChar);
+        return (haveETASign && recipientName && domainName && topLevelDomain && specialCharInBack && specialCharInFront && ConsecutiveSpecialChar);
 
 
     }
@@ -32,7 +30,12 @@ public class EmailValidator {
 
 
     public boolean DoesNotHaveAtSign_False(String data) {
-       return data.contains("@");
+        for (int i = 0; i < data.length(); i++) {
+            if (data.charAt(i) == '@') {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -45,7 +48,7 @@ public class EmailValidator {
            }
            nameLength++;
        }
-       return nameLength > 0;
+       return nameLength <= 0;
 
    }
 
@@ -61,14 +64,14 @@ public class EmailValidator {
              nameLength++;
          }
 
-         for(int i = nameLength + 1; i < data.length(); i++){
+         for(int i = (nameLength + 1); i < data.length(); i++){
              if (data.charAt(i) == '.'){
                  break;
              }
              domainNameLength++;
          }
 
-         return domainNameLength > 0;
+         return domainNameLength <= 0;
     }
 
     public boolean DoesNotHaveTopLevelDomain_False(String data) {

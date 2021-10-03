@@ -39,15 +39,16 @@ public class PasswordValidator {
 
 
     public boolean DoesNotHaveSpecialCharacters_False(String data) {
-        char ch;
-        boolean specialCharFlag = false;
-        for(int i=0;i < data.length();i++) {
-            ch = data.charAt(i);
-            if (ch == '$' || ch == '!' || ch == '@') {
-                specialCharFlag = true;
-                break;
+
+        char[] specialSymbols = new char[]{'!', '#', '$', '%', '&', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|'};
+
+        for (int i = 0; i < data.length(); i++) {
+            for (char specialSymbol : specialSymbols) {
+                if (data.charAt(i) == specialSymbol) {
+                    return true;
+                }
             }
         }
-        return specialCharFlag;
+        return false;
     }
 }

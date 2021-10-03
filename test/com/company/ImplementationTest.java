@@ -27,7 +27,7 @@ public class ImplementationTest {
     // Password tests
     @Test
     public void validate_ValidPassword_True() {
-        assertTrue(new PasswordValidator().ValidPassword_True("p@assworD123"));
+        assertTrue(new PasswordValidator().ValidPassword_True("p!assworD123"));
     }
 
     @Test
@@ -52,18 +52,18 @@ public class ImplementationTest {
 
     @Test
    public void validate_DoesNotHaveAtSign_False() {
-        assertFalse(emailValidator.validate("name.surname@email.com"));
+        assertFalse(emailValidator.validate("name.surnam@eemail.com"));
     }
 
   @Test
     public void validate_DoesNotHaveRecipientName_False() {
-        assertFalse(emailValidator.validate("g@email.com"));
+        assertFalse(emailValidator.validate("a@email.com"));
     }
 
 
     @Test
     public void validate_DoesNotHaveDomainName_False() {
-        assertFalse(emailValidator.validate("name.surname@n.com"));
+        assertFalse(emailValidator.validate("name.surname@.com"));
     }
 
     @Test
