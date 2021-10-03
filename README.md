@@ -1,0 +1,1 @@
+Testai buvo kokybiski ir labai issamus. Vienas dalykas, kuris truputi kliuvo uzkliuvo - testai buvo pateikti su assertFalse, kurie truputi nebuvo intuityvus tai teko kartais palauzyti savo mastyma. Taip pat, jie pateikti su reikiame reiksme del to visada buvo metama klaida, del kurios teko pakeisti reiksmes i tinkamas.
